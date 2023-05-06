@@ -27,7 +27,7 @@ jobs:
         with:
           create_credentials_file: true
           workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/my-pool-1/providers/openid'
-          service_account: 'cloud-function-tutorial-385803@appspot.gserviceaccount.com'
+          service_account: 'ccloud-functions@cloud-function-tutorial-385803.iam.gserviceaccount.com'
 
       - id: deploy
         uses: google-github-actions/deploy-cloud-functions@v1
