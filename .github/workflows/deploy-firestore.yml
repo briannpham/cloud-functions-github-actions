@@ -26,7 +26,6 @@ jobs:
         uses: google-github-actions/auth@v1.1.0
         with:
           create_credentials_file: true
-          export_environment_variables: true
           workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/my-pool-1/providers/openid'
           service_account: 'cloud-functions@cloud-function-tutorial-385803.iam.gserviceaccount.com'
 
@@ -40,4 +39,4 @@ jobs:
           entry_point: makeUppercase
           event_trigger_type: providers/cloud.firestore/eventTypes/document.create
           event_trigger_resource: projects/${{ env.PROJECT_ID }}/databases/(default)/documents/messages/{documentId}
-          # env_vars: GCLOUD_PROJECT=${{ env.PROJECT_ID }}
+          env_vars: GCLOUD_PROJECT=${{ env.PROJECT_ID }}
