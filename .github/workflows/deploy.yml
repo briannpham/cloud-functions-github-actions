@@ -1,0 +1,42 @@
+name: Deploy Firebase Functions
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: cloud-function-tutorial-385803
+  PROJECT_NUMBER: '284262302494'
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      id-token: write
+
+    strategy:
+      matrix:
+        FUNCTIONS: ['addMessage', 'helloWorld']
+
+    name: Deploy functions to Firebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3.5.2
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1.1.0
+        with:
+          create_credentials_file: true
+          workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/my-pool-1/providers/openid'
+          service_account: 'cloud-function-tutorial-385803@appspot.gserviceaccount.com'
+
+      - id: deploy
+        uses: google-github-actions/deploy-cloud-functions@v1
+        with:
+          name: ${{ matrix.FUNCTIONS }}
+          runtime: nodejs16
+          region: us-central1
+          source_dir: ./functions
