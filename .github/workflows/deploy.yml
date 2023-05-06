@@ -30,6 +30,7 @@ jobs:
         uses: google-github-actions/auth@v1.1.0
         with:
           create_credentials_file: true
+          export_environment_variables: true
           workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/my-pool-1/providers/openid'
           service_account: 'cloud-functions@cloud-function-tutorial-385803.iam.gserviceaccount.com'
 
