@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  PROJECT_ID: cloud-function-tutorial-385803
-  PROJECT_NUMBER: '284262302494'
+  PROJECT_ID: proov-insight-app
+  PROJECT_NUMBER: "236632919593"
 
 jobs:
   deploy:
@@ -26,8 +26,8 @@ jobs:
         uses: google-github-actions/auth@v1.1.0
         with:
           create_credentials_file: true
-          workload_identity_provider: 'projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/my-pool-1/providers/openid'
-          service_account: 'cloud-functions@cloud-function-tutorial-385803.iam.gserviceaccount.com'
+          workload_identity_provider: projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/proov-insight/providers/openid
+          service_account: mrn-githubactioninteg@proov-insight-app.iam.gserviceaccount.com
 
       - id: deploy
         uses: google-github-actions/deploy-cloud-functions@v1
