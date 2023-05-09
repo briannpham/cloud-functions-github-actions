@@ -30,8 +30,8 @@ jobs:
         with:
           create_credentials_file: true
           export_environment_variables: true
-          workload_identity_provider: projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/proov-insight/providers/openid
-          service_account: mrn-githubactioninteg@proov-insight-app.iam.gserviceaccount.com
+          workload_identity_provider: "projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/proov-insight/providers/openid"
+          service_account: "mrn-githubactioninteg@proov-insight-app.iam.gserviceaccount.com"
 
       - id: deploy
         uses: google-github-actions/deploy-cloud-functions@v1

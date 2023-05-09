@@ -13,7 +13,7 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
     .collection("messages")
     .add({ original: original });
 
-  res.json({ result: `Message with ID: ${writeResult.id} added.` });
+  res.json({ result: `Message with ID: ${writeResult.id} added v1.` });
 });
 
 exports.helloWorld = functions.https.onRequest(async (req, res) => {
